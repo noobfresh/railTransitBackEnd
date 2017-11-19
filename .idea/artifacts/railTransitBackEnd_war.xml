@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="railTransitBackEnd:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="backEnd.war">
+      <element id="artifact" artifact-name="railTransitBackEnd:war exploded" />
+    </root>
+  </artifact>
+</component>
