@@ -4,7 +4,7 @@
     <title>你好</title>
 </head>
 <body>
-<h2>收入总金额1234</h2>
+<h2>收入总金额</h2>
 <h4 class="totalIncome"></h4>
 <h2>各时间收入</h2>
 <h4 class="moneyByTime"></h4>
