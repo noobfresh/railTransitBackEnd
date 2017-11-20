@@ -22,6 +22,16 @@
 <h4 class="moneyDiscount"></h4>
 <h2>单程票卡丢失数量</h2>
 <h4 class="singleTicketLossNum"></h4>
+<h2>各线路不同票种（畅通卡、单程票卡、免费卡、学生卡、员工卡等）的出行数量、比例与对应票价收入</h2>
+<h4 class="ticketTypeLineTicket"></h4>
+<h2>各线路优惠票卡出行总人数、总计优惠票额</h2>
+<h4 class="lines"></h4>
+<h2>各线路不同优惠卡类型出行人数、优惠的票额</h2>
+<h4 class="line_ticket_type"></h4>
+<h2>车站使用优惠票卡出行总人数、总计优惠票额</h2>
+<h4 class="stations"></h4>
+<h2>车站不同优惠卡类型出行人数、优惠的票额</h2>
+<h4 class="station_ticket_type"></h4>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="application/javascript">
     $(function(){
@@ -29,6 +39,12 @@
         getTest2();
         getTest3();
         getTest4();
+        getTest5();
+        getTest6();
+        getTest7();
+        getTest8();
+        getTest9();
+
     });
 
     function getTest(){
@@ -94,6 +110,107 @@
                     text += key + ' -> ' + data[key] + '<br/>';
                 }
                 $(".moneyDiscount").html(text);
+            },
+            error: function(){
+                console.log("请求失败")
+            }
+        });
+    }
+
+    function getTest5(){
+        $.ajax({
+            type:'GET',
+            url:'test/test5',
+            dataType:'json',
+            success: function (data) {
+                var text = '';
+                var data2 = data.ticket_type_line_ticket;
+                for(var temp in data2){
+                    text += data2[temp].line + '->' + data2[temp].ticket_t + '->' + data2[temp].number + '->'
+                            + data2[temp].percent + '->' + data2[temp].income + '<br/>';
+                }
+                $(".ticketTypeLineTicket").html(text);
+            },
+            error: function(){
+                console.log("请求失败")
+            }
+        });
+    }
+
+    function getTest6(){
+        $.ajax({
+            type:'GET',
+            url:'test/test6',
+            dataType:'json',
+            success: function (data) {
+                var text = '';
+                var data2 = data.lines;
+                for(var temp in data2){
+                    text += data2[temp].line + '->' + data2[temp].people + '->' + data2[temp].totaolSaveMoney
+                             + '<br/>';
+                }
+                $(".lines").html(text);
+            },
+            error: function(){
+                console.log("请求失败")
+            }
+        });
+    }
+
+    function getTest7(){
+        $.ajax({
+            type:'GET',
+            url:'test/test7',
+            dataType:'json',
+            success: function (data) {
+                var text = '';
+                var data2 = data.line_ticket_type;
+                for(var temp in data2){
+                    text += data2[temp].line + '->'+ data2[temp].ticketType + '->' + data2[temp].people + '->' + data2[temp].totaolSavedMoney
+                            + '<br/>';
+                }
+                $(".line_ticket_type").html(text);
+            },
+            error: function(){
+                console.log("请求失败")
+            }
+        });
+    }
+
+    function getTest8(){
+        $.ajax({
+            type:'GET',
+            url:'test/test8',
+            dataType:'json',
+            success: function (data) {
+                var text = '';
+                var data2 = data.stations;
+                for(var temp in data2){
+                    text += data2[temp].people + '->'+ data2[temp].station1 + '->' + data2[temp].totaolSavedMoney
+                            + '<br/>';
+                }
+                $(".stations").html(text);
+            },
+            error: function(){
+                console.log("请求失败")
+            }
+        });
+    }
+
+
+    function getTest9(){
+        $.ajax({
+            type:'GET',
+            url:'test/test9',
+            dataType:'json',
+            success: function (data) {
+                var text = '';
+                var data2 = data.station_ticket_type;
+                for(var temp in data2){
+                    text += data2[temp].station1 + '->'+ data2[temp].ticketType + '->' + data2[temp].people + '->' + data2[temp].totaolSavedMoney
+                            + '<br/>';
+                }
+                $(".station_ticket_type").html(text);
             },
             error: function(){
                 console.log("请求失败")
