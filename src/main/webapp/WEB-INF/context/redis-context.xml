@@ -20,12 +20,14 @@
         <property name="maxTotal" value="${redis.pool.maxTotal}"/>
         <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}"/>
         <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+        
     </bean>
 
     <bean class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
           id="jedisConnectionFactory">
         <property name="hostName" value="${redis.ip}"/>
         <property name="port" value="${redis.port}"/>
+        <property name="password" value="${redis.auth}"/>
         <property name="poolConfig" ref="poolConfig"/>
     </bean>
 
